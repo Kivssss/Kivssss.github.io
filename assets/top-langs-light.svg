@@ -1,0 +1,54 @@
+<svg width="350" height="185" viewBox="0 0 350 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .header { font-family: 'Cinzel', 'Segoe UI', Georgia, serif; font-size: 14px; font-weight: 700; letter-spacing: 2.5px; }
+    .lang-name { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+    .lang-pct { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 12px; font-weight: 400; }
+  </style>
+  <rect x="0.5" y="0.5" width="349" height="184" rx="6" fill="#F7F4EC" stroke="#A88448" stroke-opacity="0.6"/>
+  <rect x="4.5" y="4.5" width="341" height="176" rx="3" fill="none" stroke="#28231C" stroke-opacity="0.08" stroke-dasharray="2, 3"/>
+  
+  <!-- Header Title with Tattoo Sigil -->
+  <g transform="translate(26, 32)">
+    <circle cx="2" cy="-4.5" r="2.5" fill="#A88448"/>
+    <text x="14" y="0" class="header" fill="#1F1C18">MOST USED LANGUAGES</text>
+  </g>
+
+  <!-- Segmented Progress Bar: Total 298px -->
+  <!-- CSS: 40% (119.2px) | HTML: 25% (74.5px) | JS: 20% (59.6px) | Kotlin: 15% (44.7px) -->
+  <g transform="translate(26, 52)">
+    <clipPath id="barClipLight">
+      <rect x="0" y="0" width="298" height="8.5" rx="4.25"/>
+    </clipPath>
+    <g clip-path="url(#barClipLight)">
+      <!-- CSS 40% -->
+      <rect x="0" y="0" width="119.2" height="8.5" fill="#563D7C"/>
+      <!-- HTML 25% -->
+      <rect x="119.2" y="0" width="74.5" height="8.5" fill="#E34C26"/>
+      <!-- JavaScript 20% -->
+      <rect x="193.7" y="0" width="59.6" height="8.5" fill="#F1E05A"/>
+      <!-- Kotlin 15% -->
+      <rect x="253.3" y="0" width="44.7" height="8.5" fill="#A97BFF"/>
+    </g>
+  </g>
+
+  <!-- Languages Legend (2 Columns, 2 Rows) -->
+  <!-- Column 1 -->
+  <g transform="translate(26, 96)">
+    <circle cx="6" cy="-4.5" r="5" fill="#563D7C"/>
+    <text x="20" y="0" class="lang-name" fill="#1F1C18">CSS <tspan class="lang-pct" fill="#5C5346">40.0%</tspan></text>
+  </g>
+  <g transform="translate(26, 138)">
+    <circle cx="6" cy="-4.5" r="5" fill="#F1E05A"/>
+    <text x="20" y="0" class="lang-name" fill="#1F1C18">JavaScript <tspan class="lang-pct" fill="#5C5346">20.0%</tspan></text>
+  </g>
+
+  <!-- Column 2 -->
+  <g transform="translate(182, 96)">
+    <circle cx="6" cy="-4.5" r="5" fill="#E34C26"/>
+    <text x="20" y="0" class="lang-name" fill="#1F1C18">HTML <tspan class="lang-pct" fill="#5C5346">25.0%</tspan></text>
+  </g>
+  <g transform="translate(182, 138)">
+    <circle cx="6" cy="-4.5" r="5" fill="#A97BFF"/>
+    <text x="20" y="0" class="lang-name" fill="#1F1C18">Kotlin <tspan class="lang-pct" fill="#5C5346">15.0%</tspan></text>
+  </g>
+</svg>

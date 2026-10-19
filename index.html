@@ -1,0 +1,2695 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KIVSSSS — Architecture &amp; Disciplines</title>
+  <!-- Primary SEO & Discovery -->
+  <meta name="description" content="Abstract formal portfolio of Kivssss — Engineering, software architecture, and fine craft inspired by sacred geometry and classical myth." />
+  <meta name="keywords" content="Kivssss, Portfolio, Software Engineering, Architecture, Sacred Geometry, Web Developer, Fine-Line Tattoo" />
+  <meta name="author" content="Kivssss" />
+  <meta name="theme-color" content="#0E0D0B" id="themeMeta" />
+
+  <!-- OpenGraph / Facebook / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kivssss.github.io/" />
+  <meta property="og:title" content="KIVSSSS — Architecture &amp; Disciplines" />
+  <meta property="og:description" content="Abstract formal portfolio of Kivssss — Engineering, software architecture, and fine craft." />
+  <meta property="og:image" content="https://kivssss.github.io/assets/icarus-bg.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://kivssss.github.io/" />
+  <meta name="twitter:title" content="KIVSSSS — Architecture &amp; Disciplines" />
+  <meta name="twitter:description" content="Abstract formal portfolio of Kivssss — Engineering, software architecture, and fine craft." />
+  <meta name="twitter:image" content="https://kivssss.github.io/assets/icarus-bg.jpg" />
+
+  <!-- Celestial Sigil Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230E0D0B' stroke='%23D6A856' stroke-width='1.5'/%3E%3Cpolygon points='16,4 19,16 16,16' fill='%23ECE6D8'/%3E%3Cpolygon points='16,4 13,16 16,16' fill='%23D6A856'/%3E%3Cpolygon points='16,28 19,16 16,16' fill='%23D6A856'/%3E%3Cpolygon points='16,28 13,16 16,16' fill='%23ECE6D8'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23D6A856'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400;1,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- STUDIO FREIGHT LENIS — MAXIMUM SMOOTH SCROLL ENGINE -->
+  <script src="./assets/lenis.min.js"></script>
+
+  <style>
+    /* ==========================================================
+       THEME VARIABLES — ABSTRACT INK & GOLD AESTHETIC (PRIMARY: DARK)
+       ========================================================== */
+    :root, [data-theme="dark"] {
+      --bg-base: #0E0D0B;
+      --bg-card: rgba(22, 20, 16, 0.82);
+      --bg-card-alt: rgba(28, 25, 20, 0.9);
+      --ink: #ECE6D8;
+      --ink-muted: #BCB29F;
+      --ink-dim: #82796B;
+      --gold: #D6A856;
+      --gold-glow: rgba(214, 168, 86, 0.3);
+      --border-fine: rgba(236, 230, 216, 0.16);
+      --border-accent: rgba(214, 168, 86, 0.5);
+      --icarus-opacity: 0.38;
+      --backdrop-blur: blur(10px) saturate(75%) brightness(65%);
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'Space Grotesk', -apple-system, sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg-base: #F7F4EC;
+      --bg-card: rgba(255, 255, 255, 0.82);
+      --bg-card-alt: rgba(243, 238, 226, 0.88);
+      --ink: #1F1C18;
+      --ink-muted: #5C5346;
+      --ink-dim: #8C806D;
+      --gold: #A88448;
+      --gold-glow: rgba(168, 132, 72, 0.25);
+      --border-fine: rgba(40, 35, 28, 0.16);
+      --border-accent: rgba(168, 132, 72, 0.55);
+      --icarus-opacity: 0.45;
+      --backdrop-blur: blur(10px) saturate(95%) brightness(102%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: none !important; /* Replaced by fluid GPU cursor */
+    }
+
+    /* ==========================================================
+       LENIS MAXIMUM SMOOTH SCROLL INTEGRATION
+       ========================================================== */
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 21px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+      position: relative;
+    }
+
+    /* ==========================================================
+       ULTRA-SMOOTH GPU COMPASS CURSOR (Core Needle + Liquid Ring)
+       ========================================================== */
+    .cursor-core, .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      border-radius: 50%;
+      will-change: transform, width, height, opacity;
+      transform: translate3d(-100px, -100px, 0); /* Offscreen until first mouse move */
+    }
+
+    /* Snappy responsive needle center */
+    .cursor-core {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+      margin: -3px 0 0 -3px;
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.05s linear;
+    }
+
+    /* Fluid trailing compass ring */
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      margin: -18px 0 0 -18px;
+      border: 1.2px solid var(--gold);
+      opacity: 0.65;
+      background: transparent;
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease,
+                  background-color 0.35s ease,
+                  opacity 0.3s ease;
+    }
+
+    /* Hover state: smooth liquid expansion over links & cards */
+    .cursor-ring.cursor-active {
+      width: 58px;
+      height: 58px;
+      margin: -29px 0 0 -29px;
+      border-color: var(--ink);
+      background-color: var(--gold-glow);
+      opacity: 0.9;
+    }
+
+    /* Subtle click pulse */
+    .cursor-ring.cursor-down {
+      transform: scale(0.85);
+      border-color: var(--gold);
+    }
+
+    /* ==========================================================
+       BACKGROUNDS & ARCHITECTURAL FRAME
+       ========================================================== */
+    .icarus-layer {
+      position: fixed;
+      inset: -40px;
+      z-index: -2;
+      background-image: url('./assets/icarus-bg.jpg');
+      background-size: cover;
+      background-position: center 100%;
+      background-repeat: no-repeat;
+      filter: var(--backdrop-blur);
+      opacity: var(--icarus-opacity);
+      transform: scale(1.05);
+      transition: filter 0.5s ease, opacity 0.5s ease;
+      pointer-events: none;
+      will-change: background-position, transform;
+    }
+
+    .matrix-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(var(--border-accent) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.38;
+      pointer-events: none;
+    }
+
+    .outer-frame {
+      position: fixed;
+      inset: 10px;
+      border: 1px solid var(--border-fine);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .outer-frame::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border: 0.5px dashed var(--border-accent);
+      opacity: 0.55;
+    }
+
+    /* ==========================================================
+       ETHEREAL CELESTIAL SPARKLE CANVAS
+       ========================================================== */
+    #sparkleCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 50; /* Shimmers across the whole page, beneath header (800) and cursor */
+    }
+
+    /* ==========================================================
+       CONTAINER & SEPARATED SECTIONS
+       ========================================================== */
+    .site-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 10;
+    }
+
+    section {
+      padding: 100px 0 60px;
+      position: relative;
+    }
+    section:first-of-type {
+      padding-top: 130px;
+    }
+
+    /* ================= FIXED TOP NAVIGATION ================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 800;
+      background: rgba(14, 13, 11, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-fine);
+      transition: background-color 0.4s ease;
+    }
+    [data-theme="light"] header {
+      background: rgba(247, 244, 236, 0.92);
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 6px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand svg {
+      width: 20px;
+      height: 20px;
+      animation: spin 30s linear infinite;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+    nav a {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      color: var(--ink);
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover {
+      background: var(--gold);
+      color: #FFF;
+      border-color: var(--gold);
+    }
+
+    .header-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-tool-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      color: var(--ink);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+    .header-tool-btn:hover, .header-tool-btn.active {
+      background: var(--gold);
+      color: #FFF;
+      border-color: var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+    .kbd-sigil {
+      font-size: 10px;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-fine);
+      padding: 1px 4px;
+      border-radius: 2px;
+      color: var(--gold);
+    }
+    .header-tool-btn:hover .kbd-sigil, .header-tool-btn.active .kbd-sigil {
+      color: #FFF;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ================= SECTION HEADINGS & DIVIDERS ================= */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .section-title::before, .section-title::after {
+      content: '';
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .section-title::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    .sigil-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 10px auto 44px;
+      opacity: 0.85;
+    }
+    .sigil-separator span {
+      height: 1px;
+      width: 140px;
+      background: var(--gold);
+    }
+    .sigil-separator i {
+      font-style: normal;
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    /* ================= HERO SECTION ================= */
+    .hero-container {
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .emblem-core {
+      max-width: 660px;
+      width: 100%;
+      margin: 0 auto 24px;
+    }
+    .emblem-core svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 6px 20px var(--gold-glow));
+    }
+
+    .abstract-tag {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .hero-axiom {
+      font-size: 26px;
+      font-style: italic;
+      color: var(--ink-muted);
+      max-width: 740px;
+      margin: 0 auto 16px;
+      line-height: 1.45;
+    }
+
+    .myth-whisper {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      letter-spacing: 3.5px;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+    }
+
+    /* ================= SECTION I: PHILOSOPHY ================= */
+    .philosophy-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-fine);
+      padding: 48px 52px;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+    }
+    .philosophy-card::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 0.5px dashed var(--border-accent);
+      pointer-events: none;
+    }
+    .philosophy-body p {
+      font-size: 22px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .philosophy-body p:first-of-type {
+      font-size: 25px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .meta-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 6px 14px;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-fine);
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .portrait-wrap {
+      text-align: center;
+    }
+    .portrait-lens {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      padding: 6px;
+      border: 1.5px solid var(--gold);
+      background: var(--bg-card-alt);
+      box-shadow: 0 4px 18px var(--gold-glow);
+    }
+    .portrait-lens img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(50%) sepia(20%);
+    }
+    .lens-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ================= SECTION II: DISCIPLINES (CODEX) ================= */
+    .codex-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .codex-cell {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-fine);
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .codex-cell:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px var(--gold-glow);
+    }
+    .cell-glyph {
+      font-size: 26px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .cell-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .cell-sub {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    /* ================= SECTION III: WORKS ================= */
+    .opus-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .opus-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-fine);
+      padding: 36px 44px;
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 32px;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+    .opus-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 10px 30px var(--gold-glow);
+    }
+    .opus-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--gold);
+      font-weight: 700;
+      text-align: center;
+    }
+    .opus-meta h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .opus-meta p {
+      font-size: 19px;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+    .opus-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .opus-tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--bg-card-alt);
+      color: var(--gold);
+      padding: 4px 11px;
+      border: 0.5px solid var(--border-fine);
+      font-weight: 500;
+    }
+    .opus-btn {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border: 1px solid var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .opus-btn:hover {
+      background: var(--gold);
+      color: #FFF;
+    }
+
+    /* ================= SECTION IV: METRICS ================= */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .metric-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-fine);
+      padding: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+    .metric-panel img {
+      max-width: 100%;
+      height: 185px;
+      object-fit: contain;
+    }
+
+    /* ================= SECTION V: DISPATCH ================= */
+    .dispatch-core {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-fine);
+      padding: 56px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+    }
+    .dispatch-core::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 0.5px dashed var(--border-accent);
+      pointer-events: none;
+    }
+    .dispatch-core h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+    .dispatch-core p {
+      font-size: 18px;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+      font-family: var(--font-mono);
+    }
+    .dispatch-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .dispatch-btn {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1px solid var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--bg-card-alt);
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    .dispatch-btn:hover {
+      background: var(--gold);
+      color: #FFF;
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      text-align: center;
+      padding: 60px 20px 50px;
+      border-top: 1px solid var(--border-fine);
+      margin-top: 60px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--ink-dim);
+    }
+    footer span {
+      font-family: var(--font-display);
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       ETHEREAL SACRED GEOMETRY SPLASH SCREEN
+       ========================================================== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-base);
+      z-index: 100000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.85s;
+      cursor: pointer;
+    }
+    .splash-screen.splash-hidden {
+      opacity: 0;
+      transform: scale(1.04);
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 440px;
+      padding: 24px;
+      position: relative;
+    }
+    .splash-emblem {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 26px;
+      position: relative;
+    }
+    .splash-emblem svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 16px var(--gold-glow));
+    }
+    .splash-spin-cw {
+      transform-origin: center;
+      animation: spin 28s linear infinite;
+    }
+    .splash-spin-ccw {
+      transform-origin: center;
+      animation: spinRev 36s linear infinite;
+    }
+    .splash-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 14px;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-left: 14px;
+    }
+    .splash-subtitle {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .splash-progress-track {
+      width: 220px;
+      height: 2px;
+      background: var(--border-fine);
+      position: relative;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .splash-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, transparent, var(--gold), #FFF);
+      box-shadow: 0 0 8px var(--gold);
+      transition: width 0.35s ease;
+    }
+    .splash-status {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--ink-dim);
+      font-style: italic;
+      height: 18px;
+      margin-bottom: 24px;
+    }
+    .splash-skip-hint {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      opacity: 0.8;
+      animation: pulse 2.2s infinite ease-in-out;
+    }
+
+    /* ================= 3D CARD TILT & GOLD FOIL SHEEN ================= */
+    .codex-cell, .opus-card, .metric-panel, .dispatch-core, .philosophy-card {
+      transform-style: preserve-3d;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+    .codex-cell::after, .opus-card::after, .metric-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 240px at var(--mouse-x, -500px) var(--mouse-y, -500px), var(--gold-glow), transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: inherit;
+    }
+    .codex-cell:hover::after, .opus-card:hover::after, .metric-panel:hover::after {
+      opacity: 1;
+    }
+
+    /* ================= SCROLL REVEAL ANIMATIONS ================= */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= COMMAND PALETTE MODAL ================= */
+    .cmd-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 9, 8, 0.82);
+      backdrop-filter: blur(14px);
+      z-index: 99990;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 14vh 20px 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .cmd-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cmd-dialog {
+      width: 100%;
+      max-width: 580px;
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px var(--gold-glow);
+      position: relative;
+      transform: translateY(-16px) scale(0.98);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+    .cmd-overlay.active .cmd-dialog {
+      transform: translateY(0) scale(1);
+    }
+    .cmd-dialog::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 0.5px dashed var(--border-accent);
+      pointer-events: none;
+    }
+    .cmd-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-fine);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cmd-sigil {
+      color: var(--gold);
+      font-size: 16px;
+    }
+    .cmd-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+    .cmd-input::placeholder {
+      color: var(--ink-dim);
+      font-style: italic;
+    }
+    .cmd-list {
+      max-height: 310px;
+      overflow-y: auto;
+      padding: 8px 0;
+      list-style: none;
+    }
+    .cmd-item {
+      padding: 12px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .cmd-item.selected, .cmd-item:hover {
+      background: var(--gold-glow);
+      color: var(--ink);
+      border-left: 3px solid var(--gold);
+    }
+    .cmd-item span.shortcut {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      border: 1px solid var(--border-fine);
+      padding: 2px 6px;
+    }
+    .cmd-footer {
+      padding: 10px 20px;
+      border-top: 1px solid var(--border-fine);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--ink-dim);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ================= PROJECT DOSSIER MODAL ================= */
+    .dossier-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 9, 8, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 99992;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.32s ease;
+    }
+    .dossier-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dossier-dialog {
+      width: 100%;
+      max-width: 740px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65), 0 0 35px var(--gold-glow);
+      position: relative;
+      padding: 44px 38px 36px;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dossier-overlay.active .dossier-dialog {
+      transform: translateY(0) scale(1);
+    }
+    .dossier-dialog::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 0.5px dashed var(--border-accent);
+      pointer-events: none;
+    }
+    .dossier-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--border-fine);
+      color: var(--ink-dim);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .dossier-close:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: rotate(90deg);
+    }
+    .dossier-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .dossier-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 3px;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .dossier-summary {
+      font-size: 19px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .dossier-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+      border-top: 1px solid var(--border-fine);
+      border-bottom: 1px solid var(--border-fine);
+      padding: 20px 0;
+    }
+    .dossier-spec-item h5 {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .dossier-spec-item p {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink);
+    }
+    .dossier-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    /* ================= SIGIL TOAST NOTIFICATION ================= */
+    #sigilToast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(24px);
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--gold-glow);
+      padding: 12px 28px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      z-index: 99998;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #sigilToast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ================= CELESTIAL ETCH SANDBOX CANVAS ================= */
+    #etchCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 55;
+    }
+    body.etch-mode #etchCanvas {
+      pointer-events: auto;
+    }
+    body.etch-mode .outer-frame {
+      border-color: var(--gold);
+      box-shadow: inset 0 0 24px var(--gold-glow);
+    }
+
+    /* ================= LIVE TRANSMISSIONS TERMINAL ================= */
+    .transmissions-panel {
+      margin-top: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-fine);
+      backdrop-filter: blur(8px);
+      padding: 24px;
+      position: relative;
+    }
+    .transmissions-panel::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 0.5px dashed var(--border-accent);
+      pointer-events: none;
+    }
+    .trans-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .trans-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gold);
+    }
+    .radar-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+      animation: radarPing 2s infinite ease-out;
+    }
+    @keyframes radarPing {
+      0% { transform: scale(0.9); opacity: 1; }
+      70% { transform: scale(2.4); opacity: 0; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    .trans-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .trans-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      border-bottom: 0.5px solid var(--border-fine);
+      padding-bottom: 8px;
+    }
+    .trans-repo {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .trans-desc {
+      color: var(--ink-muted);
+      margin-left: 8px;
+    }
+    .trans-time {
+      color: var(--ink-dim);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* ================= KEYFRAME ANIMATIONS ================= */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinRev {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.92; }
+      50% { transform: scale(1.025); opacity: 1; }
+    }
+
+    .rot-cw { transform-origin: center; animation: spin 45s linear infinite; }
+    .rot-ccw { transform-origin: center; animation: spinRev 60s linear infinite; }
+    .pulse-mark { transform-origin: center; animation: pulse 4s ease-in-out infinite; }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .philosophy-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 36px 24px;
+      }
+      .codex-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .opus-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 28px 20px;
+      }
+      .opus-tags {
+        justify-content: center;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      header {
+        padding: 12px 20px;
+      }
+      nav {
+        display: none;
+      }
+      * {
+        cursor: auto !important;
+      }
+      .cursor-core, .cursor-ring {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-tools {
+        gap: 6px;
+      }
+      .header-tool-btn, .theme-toggle {
+        padding: 5px 8px;
+        font-size: 10px;
+      }
+      .theme-toggle span:last-child {
+        display: none;
+      }
+      .dossier-dialog {
+        padding: 32px 20px 24px;
+      }
+      .dossier-spec-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ==========================================================
+       ETHEREAL SACRED GEOMETRY SPLASH SCREEN
+       ========================================================== -->
+  <div id="splashScreen" class="splash-screen" role="dialog" aria-modal="true" aria-label="Initiation Screen">
+    <div class="splash-content">
+      <!-- Sacred Geometry Initiation Sigil -->
+      <div class="splash-emblem">
+        <svg viewBox="0 0 160 160" fill="none">
+          <!-- Outer Astrological Ring -->
+          <circle cx="80" cy="80" r="72" stroke="var(--border-accent)" stroke-width="0.8" stroke-dasharray="2, 4" class="splash-spin-ccw" />
+          <circle cx="80" cy="80" r="64" stroke="var(--gold)" stroke-width="0.5" />
+          <circle cx="80" cy="80" r="50" stroke="var(--ink)" stroke-width="0.8" stroke-dasharray="4, 3" class="splash-spin-cw" />
+          
+          <!-- Concentric Squares & Cross -->
+          <rect x="42" y="42" width="76" height="76" stroke="var(--gold)" stroke-width="0.6" fill="none" class="splash-spin-cw" />
+          <rect x="42" y="42" width="76" height="76" stroke="var(--border-accent)" stroke-width="0.6" fill="none" transform="rotate(45 80 80)" class="splash-spin-ccw" />
+          
+          <!-- Compass Needles -->
+          <polygon points="80,24 85,80 80,80" fill="var(--ink)" />
+          <polygon points="80,24 75,80 80,80" fill="var(--gold)" />
+          <polygon points="80,136 85,80 80,80" fill="var(--gold)" />
+          <polygon points="80,136 75,80 80,80" fill="var(--ink)" />
+          <polygon points="136,80 80,85 80,80" fill="var(--ink)" />
+          <polygon points="136,80 80,75 80,80" fill="var(--gold)" />
+          <polygon points="24,80 80,85 80,80" fill="var(--gold)" />
+          <polygon points="24,80 80,75 80,80" fill="var(--ink)" />
+
+          <!-- Golden Core -->
+          <circle cx="80" cy="80" r="6" fill="var(--bg-base)" stroke="var(--gold)" stroke-width="1.2" />
+          <circle cx="80" cy="80" r="2.5" fill="var(--gold)" />
+        </svg>
+      </div>
+
+      <h1 class="splash-title">KIVSSSS</h1>
+      <p class="splash-subtitle">ARCHITECTURE &amp; DISCIPLINES</p>
+      
+      <div class="splash-progress-track">
+        <div class="splash-progress-bar" id="splashBar"></div>
+      </div>
+      
+      <div class="splash-status" id="splashStatus">Inscribing Sacred Codex...</div>
+
+      <div class="splash-skip-hint">✦ Click or Press Any Key to Enter ✦</div>
+    </div>
+  </div>
+
+  <!-- ULTRA-SMOOTH CUSTOM CURSOR ELEMENTS -->
+  <div class="cursor-core" id="cursorCore"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- BLURRED ABSTRACT ICARUS ARTWORK & GRID OVERLAY -->
+  <div class="icarus-layer"></div>
+  <div class="matrix-layer"></div>
+
+  <!-- ETHEREAL CELESTIAL SPARKLE EFFECT CANVAS -->
+  <canvas id="sparkleCanvas"></canvas>
+
+  <!-- CELESTIAL ETCH SANDBOX CANVAS -->
+  <canvas id="etchCanvas"></canvas>
+
+  <!-- ARCHITECTURAL OUTER FRAME -->
+  <div class="outer-frame"></div>
+
+  <!-- STICKY TOP HEADER -->
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="16" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="2, 3" />
+        <circle cx="20" cy="20" r="11" stroke="var(--ink)" stroke-width="0.8" />
+        <polygon points="20,6 23,20 20,20" fill="var(--ink)" />
+        <polygon points="20,6 17,20 20,20" fill="var(--gold)" />
+        <polygon points="20,34 23,20 20,20" fill="var(--gold)" />
+        <polygon points="20,34 17,20 20,20" fill="var(--ink)" />
+      </svg>
+      <span>KIVSSSS</span>
+    </div>
+
+    <div class="header-actions">
+      <nav>
+        <a href="#origin">Origin</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#codex">Disciplines</a>
+        <a href="#works">Works</a>
+        <a href="#archive">Metrics</a>
+        <a href="#dispatch">Dispatch</a>
+      </nav>
+
+      <div class="header-tools">
+        <!-- COMMAND PALETTE SHORTCUT (Ctrl + K) -->
+        <button class="header-tool-btn" id="cmdBtn" title="Command Palette (Ctrl + K)" aria-label="Open Command Palette">
+          <span class="kbd-sigil">⌘K</span>
+        </button>
+
+        <!-- ETHEREAL WEB-AUDIO CHIMES TOGGLE (ALWAYS ON) -->
+        <button class="header-tool-btn active" id="audioBtn" title="Ethereal Audio Chimes (Always On)" aria-label="Toggle Audio Chimes">
+          <span id="audioIcon">🔔</span>
+        </button>
+
+        <!-- CELESTIAL ETCH SANDBOX TOGGLE -->
+        <button class="header-tool-btn" id="etchBtn" title="Toggle Celestial Etch Mode (Draw on page)" aria-label="Toggle Etch Mode">
+          <span id="etchIcon">✧</span>
+        </button>
+
+        <!-- DARK / LIGHT MODE SWITCH BUTTON -->
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle visual theme">
+          <span id="themeIcon">☼</span>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SCROLLABLE SITE CONTAINER -->
+  <div class="site-container">
+
+    <!-- ================= SECTION 0: ORIGIN (EMBLEM HERO) ================= -->
+    <section id="origin">
+      <div class="hero-container">
+        <div class="emblem-core">
+          <svg viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer Astrological Wheel -->
+            <g class="rot-cw" style="transform-origin: 450px 145px;">
+              <circle cx="450" cy="145" r="95" stroke="var(--ink)" stroke-width="0.6" stroke-dasharray="2, 6" />
+              <circle cx="450" cy="145" r="88" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="4, 8" />
+              <line x1="450" y1="46" x2="450" y2="56" stroke="var(--gold)" stroke-width="1.5" />
+              <line x1="450" y1="234" x2="450" y2="244" stroke="var(--gold)" stroke-width="1.5" />
+              <line x1="351" y1="145" x2="361" y2="145" stroke="var(--gold)" stroke-width="1.5" />
+              <line x1="539" y1="145" x2="549" y2="145" stroke="var(--gold)" stroke-width="1.5" />
+            </g>
+
+            <!-- Middle Counter-Rotating Sacred Geometry -->
+            <g class="rot-ccw" style="transform-origin: 450px 145px;">
+              <circle cx="450" cy="145" r="72" stroke="var(--ink)" stroke-width="0.75" />
+              <rect x="399" y="94" width="102" height="102" stroke="var(--gold)" stroke-width="0.6" />
+              <rect x="399" y="94" width="102" height="102" stroke="var(--gold)" stroke-width="0.6" opacity="0.6" transform="rotate(45 450 145)" />
+              <circle cx="450" cy="73" r="1.5" fill="var(--ink)" />
+              <circle cx="450" cy="217" r="1.5" fill="var(--ink)" />
+              <circle cx="378" cy="145" r="1.5" fill="var(--ink)" />
+              <circle cx="522" cy="145" r="1.5" fill="var(--ink)" />
+            </g>
+
+            <!-- Pulsing Needlework Compass Core -->
+            <g class="pulse-mark" style="transform-origin: 450px 145px;">
+              <circle cx="450" cy="145" r="50" stroke="var(--ink)" stroke-width="1" />
+              <circle cx="450" cy="145" r="46" stroke="var(--gold)" stroke-width="0.5" stroke-dasharray="1.5, 2" />
+              <circle cx="450" cy="145" r="32" stroke="var(--ink)" stroke-width="0.6" />
+
+              <polygon points="450,88 453,142 450,145" fill="var(--ink)" />
+              <polygon points="450,88 447,142 450,145" fill="var(--gold)" />
+              <polygon points="450,202 453,148 450,145" fill="var(--gold)" />
+              <polygon points="450,202 447,148 450,145" fill="var(--ink)" />
+              <polygon points="507,145 453,148 450,145" fill="var(--ink)" />
+              <polygon points="507,145 453,142 450,145" fill="var(--gold)" />
+              <polygon points="393,145 447,148 450,145" fill="var(--gold)" />
+              <polygon points="393,145 447,142 450,145" fill="var(--ink)" />
+
+              <circle cx="450" cy="145" r="4.5" fill="var(--bg-base)" stroke="var(--ink)" stroke-width="1.2" />
+              <circle cx="450" cy="145" r="2" fill="var(--gold)" />
+            </g>
+
+            <line x1="450" y1="36" x2="450" y2="48" stroke="var(--gold)" stroke-width="1.2" />
+            <circle cx="450" cy="34" r="1.5" fill="var(--gold)" />
+            <line x1="450" y1="242" x2="450" y2="252" stroke="var(--gold)" stroke-width="1.2" />
+            <circle cx="450" cy="254" r="1.5" fill="var(--gold)" />
+
+            <!-- Formal Lettering -->
+            <text x="456" y="278" font-family="'Cinzel', serif" font-size="38" letter-spacing="12" fill="var(--ink)" text-anchor="middle" font-weight="600">KIVSSSS</text>
+            <text x="454" y="299" font-family="'Cinzel', serif" font-size="11" letter-spacing="7" fill="var(--gold)" text-anchor="middle">ENGINEERING &amp; SOFTWARE ARCHITECTURE</text>
+            <text x="454" y="315" font-family="'Cinzel', serif" font-size="8.5" letter-spacing="5" fill="var(--ink-dim)" text-anchor="middle" font-style="italic">DISCENDO ARTE · EXCELLENTIA SERVIENDO</text>
+          </svg>
+        </div>
+
+        <div class="abstract-tag">Ambition · Hubris · Craft</div>
+        <p class="hero-axiom">
+          "Every line of code, like ink drawn into skin, demands intention, discipline, and endurance."
+        </p>
+        <div class="myth-whisper">✦ Guided by the Myth of Icarus · Daring the Heights with Grounded Technique ✦</div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 1: PHILOSOPHY ================= -->
+    <section id="philosophy">
+      <h2 class="section-title">✦ I. Philosophy &amp; Discipline</h2>
+      <div class="sigil-separator">
+        <span></span><i>✦</i><span></span>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-body">
+          <p>I am a 23-year-old engineering scholar dedicated to the deliberate practice of software craft and systematic development.</p>
+          <p>Ambition lifts us toward the heavens—yet lasting engineering requires the restraint of Daedalus. I devote complete discipline to every project, building software that is structured, robust, and meaningful to those it serves.</p>
+          
+          <div class="meta-pills">
+            <div class="meta-pill">Engineering Student</div>
+            <div class="meta-pill">Web Systems</div>
+            <div class="meta-pill">Algorithmic Tools</div>
+            <div class="meta-pill">Philippines (GMT+8)</div>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="portrait-lens">
+            <img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/203780122?v=4&w=260&h=260&fit=cover&mask=circle&sat=-50" alt="Kivssss Avatar" />
+          </div>
+          <div class="lens-label">Kivssss · Scholar</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 2: DISCIPLINES (CODEX) ================= -->
+    <section id="codex">
+      <h2 class="section-title">✦ II. The Codex of Skills</h2>
+      <div class="sigil-separator">
+        <span></span><i>✧</i><span></span>
+      </div>
+
+      <div class="codex-grid">
+        <div class="codex-cell">
+          <div class="cell-glyph">✦</div>
+          <div class="cell-title">HTML5 Semantic</div>
+          <div class="cell-sub">Clean structural taxonomy and accessible markup hygiene.</div>
+        </div>
+        <div class="codex-cell">
+          <div class="cell-glyph">✧</div>
+          <div class="cell-title">CSS3 Typography</div>
+          <div class="cell-sub">Responsive rhythm, modern layouts, and fine geometric balance.</div>
+        </div>
+        <div class="codex-cell">
+          <div class="cell-glyph">✦</div>
+          <div class="cell-title">JavaScript</div>
+          <div class="cell-sub">Asynchronous flows, interactive state, and DOM orchestration.</div>
+        </div>
+        <div class="codex-cell">
+          <div class="cell-glyph">✧</div>
+          <div class="cell-title">Python</div>
+          <div class="cell-sub">Computational scripts, algorithmic logic, and data structures.</div>
+        </div>
+        <div class="codex-cell">
+          <div class="cell-glyph">✦</div>
+          <div class="cell-title">Git Stewardship</div>
+          <div class="cell-sub">Atomic commits, branch integrity, and collaborative history.</div>
+        </div>
+        <div class="codex-cell">
+          <div class="cell-glyph">✧</div>
+          <div class="cell-title">VS Code &amp; Unix</div>
+          <div class="cell-sub">Disciplined tooling, terminal workflows, and lint precision.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 3: WORKS ================= -->
+    <section id="works">
+      <h2 class="section-title">✦ III. Selected Works</h2>
+      <div class="sigil-separator">
+        <span></span><i>✦</i><span></span>
+      </div>
+
+      <div class="opus-deck">
+        <div class="opus-card reveal-item" data-project="floodguard">
+          <div class="opus-num">01</div>
+          <div class="opus-meta">
+            <h3>Floodguard Application</h3>
+            <p>A civic warning and environmental sensory architecture designed to deliver real-time alerts to vulnerable communities during severe weather incidents.</p>
+            <div class="opus-tags">
+              <span class="opus-tag">HTML5</span>
+              <span class="opus-tag">CSS3</span>
+              <span class="opus-tag">JavaScript</span>
+              <span class="opus-tag">Disaster Mitigation</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="opus-btn open-dossier-btn" data-project="floodguard">Dossier ✦</button>
+            <a href="https://github.com/Kivssss/Floodguard-app" target="_blank" rel="noopener" class="opus-btn">Examine Repo ↗</a>
+          </div>
+        </div>
+
+        <div class="opus-card reveal-item" data-project="portfolio">
+          <div class="opus-num">02</div>
+          <div class="opus-meta">
+            <h3>Tattoo Aesthetic Portfolio</h3>
+            <p>This formal, abstract, fine-line tattoo portfolio with smooth cursor physics, live dark-mode toggle, generous separated flow, and classical Icarus atmosphere.</p>
+            <div class="opus-tags">
+              <span class="opus-tag">HTML &amp; CSS</span>
+              <span class="opus-tag">Smooth Cursor</span>
+              <span class="opus-tag">Dark Mode</span>
+              <span class="opus-tag">GitHub Pages</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="opus-btn open-dossier-btn" data-project="portfolio">Dossier ✦</button>
+            <a href="https://github.com/Kivssss/Kivssss.github.io" target="_blank" rel="noopener" class="opus-btn">View Source ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 4: ARCHIVE METRICS ================= -->
+    <section id="archive">
+      <h2 class="section-title">✦ IV. Archival Metrics</h2>
+      <div class="sigil-separator">
+        <span></span><i>✧</i><span></span>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-panel reveal-item">
+          <img id="statsImg" src="https://github-readme-stats.vercel.app/api?username=Kivssss&show_icons=true&count_private=true&bg_color=161410&title_color=ECE6D8&text_color=BCB29F&icon_color=D6A856&border_color=D6A856" alt="GitHub Stats" />
+        </div>
+        <div class="metric-panel reveal-item">
+          <img id="langsImg" src="./assets/top-langs-dark.svg" alt="Most Used Languages: CSS 40%, HTML 25%, JavaScript 20%, Kotlin 15%" />
+        </div>
+      </div>
+
+      <!-- LIVE ARCHIVAL TRANSMISSIONS FEED -->
+      <div class="transmissions-panel reveal-item">
+        <div class="trans-header">
+          <span>✦ Live GitHub Transmissions</span>
+          <div class="trans-status">
+            <div class="radar-pulse"></div>
+            <span id="transStatusText">Synchronized</span>
+          </div>
+        </div>
+        <ul class="trans-list" id="transList">
+          <li class="trans-row">
+            <div>
+              <span class="trans-repo">Kivssss/Floodguard-app</span>
+              <span class="trans-desc">Refined sensory alert thresholds and civic dispatch logic</span>
+            </div>
+            <span class="trans-time">Recently Recorded</span>
+          </li>
+          <li class="trans-row">
+            <div>
+              <span class="trans-repo">Kivssss/Kivssss.github.io</span>
+              <span class="trans-desc">Deployed classical tattoo aesthetic with ethereal Lenis momentum</span>
+            </div>
+            <span class="trans-time">Archived Opus</span>
+          </li>
+          <li class="trans-row">
+            <div>
+              <span class="trans-repo">Kivssss/Kivssss</span>
+              <span class="trans-desc">Inscribed sacred geometry emblems and codex disciplines</span>
+            </div>
+            <span class="trans-time">Profile Sigil</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 5: DISPATCH ================= -->
+    <section id="dispatch">
+      <h2 class="section-title">✦ V. Celestial Dispatch</h2>
+      <div class="sigil-separator">
+        <span></span><i>✦</i><span></span>
+      </div>
+
+      <div class="dispatch-core reveal-item">
+        <h3>Let Us Create Enduring Works</h3>
+        <p>Open for software collaboration, engineering dialogues, and academic initiatives.</p>
+        
+        <div class="dispatch-buttons">
+          <a href="https://github.com/Kivssss" target="_blank" rel="noopener" class="dispatch-btn">✦ GitHub Profile</a>
+          <button class="dispatch-btn" id="dispatchEmailBtn" data-email="kivssss@users.noreply.github.com" style="cursor: pointer;">✉ Dispatch Letter</button>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End site-container -->
+
+  <!-- FOOTER -->
+  <footer>
+    Finis Coronat Opus · &copy; 2026 <span>KIVSSSS</span>
+  </footer>
+
+  <!-- SIGIL TOAST NOTIFICATION -->
+  <div id="sigilToast">
+    <span>✦</span>
+    <span id="toastMsg">Inscribed to Clipboard</span>
+    <span>✦</span>
+  </div>
+
+  <!-- COMMAND PALETTE MODAL (Ctrl + K) -->
+  <div class="cmd-overlay" id="cmdOverlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-dialog">
+      <div class="cmd-header">
+        <span class="cmd-sigil">✦</span>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Type a discipline or command... (e.g. 'works', 'dark', 'chime', 'etch')" autocomplete="off" />
+      </div>
+      <ul class="cmd-list" id="cmdList"></ul>
+      <div class="cmd-footer">
+        <span>↑↓ Navigate · ↵ Select · ESC Dismiss</span>
+        <span>KIVSSSS ARCHIVAL SYSTEM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT DOSSIER MODAL -->
+  <div class="dossier-overlay" id="dossierOverlay" role="dialog" aria-modal="true" aria-label="Project Dossier">
+    <div class="dossier-dialog" id="dossierDialog">
+      <button class="dossier-close" id="dossierClose" aria-label="Close Dossier">✕</button>
+      <div class="dossier-num" id="dossierNum">OPUS · 01</div>
+      <h3 class="dossier-title" id="dossierTitle">Floodguard Application</h3>
+      <p class="dossier-summary" id="dossierSummary"></p>
+      
+      <div class="dossier-spec-grid" id="dossierSpecGrid"></div>
+
+      <div class="dossier-actions" id="dossierActions"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       ULTRA-SMOOTH DUAL-LERP CURSOR ENGINE + THEME SWITCHER
+       ========================================================== -->
+  <script>
+    /* ==========================================================
+       MAXIMUM SMOOTH SCROLL ENGINE (Studio Freight Lenis + Fallback)
+       ========================================================== */
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.5, // 1.5s exponential glide for maximum buttery luxury
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Luxurious exponential deceleration curve
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.6,
+        infinite: false,
+      });
+
+      function lenisRaf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(lenisRaf);
+      }
+      requestAnimationFrame(lenisRaf);
+
+      // Background scroll from top to bottom
+      const icarusLayer = document.querySelector('.icarus-layer');
+      const matrixLayer = document.querySelector('.matrix-layer');
+
+      let autoDescentActive = false;
+      let autoDescentProgress = 100;
+
+      function updateBackgroundDescent(scrollY) {
+        if (autoDescentActive) return;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+        
+        if (icarusLayer) {
+          // Reverse: smoothly scroll painting from bottom (100%) to top (0%) as visitor scrolls down
+          const yPos = (100 - progress * 100).toFixed(2);
+          icarusLayer.style.backgroundPositionY = `${yPos}%`;
+        }
+        if (matrixLayer) {
+          matrixLayer.style.transform = `translate3d(0, ${(-scrollY * 0.18).toFixed(2)}px, 0)`;
+        }
+      }
+
+      function toggleAutoDescent() {
+        autoDescentActive = !autoDescentActive;
+        if (autoDescentActive) {
+          showSigilToast('Auto-Ascent Background Active');
+        } else {
+          showSigilToast('Background Scroll Linked to Page');
+          updateBackgroundDescent(window.scrollY);
+        }
+      }
+
+      function autoDescentLoop() {
+        if (autoDescentActive && icarusLayer) {
+          autoDescentProgress = (autoDescentProgress - 0.04 + 100) % 100;
+          icarusLayer.style.backgroundPositionY = `${autoDescentProgress.toFixed(2)}%`;
+        }
+        requestAnimationFrame(autoDescentLoop);
+      }
+      requestAnimationFrame(autoDescentLoop);
+
+      lenis.on('scroll', ({ scroll }) => {
+        updateBackgroundDescent(scroll);
+      });
+
+      // Initialize background position
+      updateBackgroundDescent(window.scrollY);
+
+      // Smooth anchor link gliding
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl, { offset: -60, duration: 1.8 });
+          }
+        });
+      });
+    } else {
+      // Pure Lerp Momentum Scroller Fallback
+      let currentScroll = window.scrollY;
+      let targetScroll = window.scrollY;
+      let isScrolling = false;
+
+      window.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        targetScroll = Math.max(0, Math.min(targetScroll + e.deltaY * 0.9, maxScroll));
+        if (!isScrolling) {
+          isScrolling = true;
+          requestAnimationFrame(updateFallbackScroll);
+        }
+      }, { passive: false });
+
+      function updateFallbackScroll() {
+        currentScroll += (targetScroll - currentScroll) * 0.085;
+        window.scrollTo(0, currentScroll);
+        if (typeof updateBackgroundDescent === 'function') updateBackgroundDescent(currentScroll);
+        if (Math.abs(targetScroll - currentScroll) > 0.5) {
+          requestAnimationFrame(updateFallbackScroll);
+        } else {
+          isScrolling = false;
+        }
+      }
+    }
+    /*
+      DUAL-PHASE LERP CURSOR PHYSICS:
+      - Uses translate3d() for pure GPU hardware compositing (bypassing CPU layout recalculation).
+      - Core follows at high responsiveness (0.42) so the user never feels disconnected or sluggish.
+      - Outer compass ring glides with silky fluid momentum (0.12).
+      - Delta thresholds sleep the animation loop when mouse is stationary, saving 100% CPU.
+    */
+    const core = document.getElementById('cursorCore');
+    const ring = document.getElementById('cursorRing');
+
+    let mouseX = -100, mouseY = -100;
+    let coreX = -100, coreY = -100;
+    let ringX = -100, ringY = -100;
+    let isMoving = false;
+    let isFirstMove = true;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (isFirstMove) {
+        coreX = ringX = mouseX;
+        coreY = ringY = mouseY;
+        isFirstMove = false;
+      }
+
+      if (!isMoving) {
+        isMoving = true;
+        requestAnimationFrame(updateCursor);
+      }
+    }, { passive: true });
+
+    function updateCursor() {
+      // 1. Dual-rate Linear Interpolation
+      const coreSpeed = 0.42; // Fast, responsive needle
+      const ringSpeed = 0.12; // Silky fluid trailing ring
+
+      coreX += (mouseX - coreX) * coreSpeed;
+      coreY += (mouseY - coreY) * coreSpeed;
+
+      ringX += (mouseX - ringX) * ringSpeed;
+      ringY += (mouseY - ringY) * ringSpeed;
+
+      // 2. Hardware-accelerated GPU translate3d
+      core.style.transform = `translate3d(${coreX}px, ${coreY}px, 0)`;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+
+      // 3. Precision sleep check
+      const delta = Math.abs(mouseX - ringX) + Math.abs(mouseY - ringY);
+      if (delta > 0.1) {
+        requestAnimationFrame(updateCursor);
+      } else {
+        isMoving = false;
+      }
+    }
+
+    // Hover magnet reactions on interactive targets
+    const interactiveElements = document.querySelectorAll('a, button, .codex-cell, .opus-card, .metric-panel');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('cursor-active'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('cursor-active'));
+    });
+
+    // Tactile click press
+    window.addEventListener('mousedown', () => ring.classList.add('cursor-down'));
+    window.addEventListener('mouseup', () => ring.classList.remove('cursor-down'));
+
+    /* DARK / LIGHT THEME TOGGLE (PRIMARY: DARK) */
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+    const statsImg = document.getElementById('statsImg');
+    const langsImg = document.getElementById('langsImg');
+
+    function updateThemeUI(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      try { localStorage.setItem('kivssss-theme', theme); } catch (e) {}
+      if (theme === 'light') {
+        themeIcon.textContent = '☾';
+        themeLabel.textContent = 'Dark';
+        statsImg.src = "https://github-readme-stats.vercel.app/api?username=Kivssss&show_icons=true&count_private=true&bg_color=F7F4EC&title_color=1F1C18&text_color=5C5346&icon_color=A88448&border_color=A88448";
+        langsImg.src = "./assets/top-langs-light.svg";
+      } else {
+        themeIcon.textContent = '☼';
+        themeLabel.textContent = 'Light';
+        statsImg.src = "https://github-readme-stats.vercel.app/api?username=Kivssss&show_icons=true&count_private=true&bg_color=161410&title_color=ECE6D8&text_color=BCB29F&icon_color=D6A856&border_color=D6A856";
+        langsImg.src = "./assets/top-langs-dark.svg";
+      }
+    }
+
+    // Initialize with saved preference or default primary dark theme
+    const savedTheme = (function() {
+      try { return localStorage.getItem('kivssss-theme'); } catch(e) { return null; }
+    })() || 'dark';
+    updateThemeUI(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const target = current === 'dark' ? 'light' : 'dark';
+      updateThemeUI(target);
+    });
+
+    /* ==========================================================
+       ETHEREAL CELESTIAL SPARKLE ENGINE (Ambient & Interactive)
+       ========================================================== */
+    (function initCelestialSparkles() {
+      const canvas = document.getElementById('sparkleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform before scaling
+        ctx.scale(dpr, dpr);
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      function getThemeColors() {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        return {
+          gold: isLight ? 'rgba(168, 132, 72, ' : 'rgba(214, 168, 86, ',
+          core: isLight ? 'rgba(255, 253, 245, ' : 'rgba(255, 252, 235, '
+        };
+      }
+
+      // Draw 4-pointed celestial diamond flare (✦)
+      function drawStarFlare(cx, cy, size, opacity, colors) {
+        if (opacity <= 0.015) return;
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        // Soft outer ambient aura
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.9, 0, Math.PI * 2);
+        ctx.fillStyle = colors.gold + (opacity * 0.22) + ')';
+        ctx.fill();
+
+        // 4-pointed concave diamond flare
+        ctx.beginPath();
+        ctx.moveTo(0, -size);
+        ctx.quadraticCurveTo(0, 0, size, 0);
+        ctx.quadraticCurveTo(0, 0, 0, size);
+        ctx.quadraticCurveTo(0, 0, -size, 0);
+        ctx.quadraticCurveTo(0, 0, 0, -size);
+        ctx.closePath();
+        ctx.fillStyle = colors.gold + opacity + ')';
+        ctx.fill();
+
+        // Bright diamond center core
+        ctx.beginPath();
+        ctx.arc(0, 0, Math.max(0.35, size * 0.2), 0, Math.PI * 2);
+        ctx.fillStyle = colors.core + Math.min(1, opacity * 1.25) + ')';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Draw soft celestial micro-spark
+      function drawSpark(cx, cy, radius, opacity, colors) {
+        if (opacity <= 0.015) return;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = colors.gold + opacity + ')';
+        ctx.fill();
+
+        // Bright center
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 0.45, 0, Math.PI * 2);
+        ctx.fillStyle = colors.core + Math.min(1, opacity * 1.3) + ')';
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 1. Dense Celestial Field (220 delicate micro-sparkles across the screen)
+      const AMBIENT_COUNT = 220;
+      const ambient = [];
+      for (let i = 0; i < AMBIENT_COUNT; i++) {
+        const isStar = Math.random() < 0.38; // 38% tiny diamond stars, 62% luminous micro-sparks
+        ambient.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: isStar ? 1.8 + Math.random() * 2.2 : 0.75 + Math.random() * 1.4,
+          isStar: isStar,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.008 + Math.random() * 0.026,
+          vx: (Math.random() - 0.5) * 0.07,
+          vy: (Math.random() - 0.5) * 0.07,
+          maxOpacity: 0.35 + Math.random() * 0.55
+        });
+      }
+
+      // 2. Interactive Cursor Stardust (fine golden glitter trail)
+      const cursorDust = [];
+      let lastSpawn = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        if (now - lastSpawn > 25) {
+          lastSpawn = now;
+          if (cursorDust.length < 65) {
+            cursorDust.push({
+              x: e.clientX + (Math.random() - 0.5) * 10,
+              y: e.clientY + (Math.random() - 0.5) * 10,
+              vx: (Math.random() - 0.5) * 0.45,
+              vy: (Math.random() - 0.5) * 0.45 - 0.22,
+              size: 1.1 + Math.random() * 1.8,
+              life: 1.0,
+              decay: 0.02 + Math.random() * 0.025,
+              isStar: Math.random() < 0.35
+            });
+          }
+        }
+      }, { passive: true });
+
+      // Click burst: radiate 12 delicate micro-sparks
+      window.addEventListener('mousedown', (e) => {
+        for (let i = 0; i < 12; i++) {
+          const angle = (Math.PI * 2 / 12) * i + (Math.random() - 0.5) * 0.4;
+          const speed = 1.0 + Math.random() * 2.0;
+          cursorDust.push({
+            x: e.clientX,
+            y: e.clientY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            size: 1.6 + Math.random() * 2.0,
+            life: 1.0,
+            decay: 0.025 + Math.random() * 0.02,
+            isStar: true
+          });
+        }
+      }, { passive: true });
+
+      // Main Animation Loop
+      function renderSparkles() {
+        ctx.clearRect(0, 0, width, height);
+        const colors = getThemeColors();
+
+        // Draw ambient field
+        for (let i = 0; i < ambient.length; i++) {
+          const s = ambient[i];
+          s.phase += s.speed;
+          s.x += s.vx;
+          s.y += s.vy;
+
+          if (s.x < -15) s.x = width + 15;
+          if (s.x > width + 15) s.x = -15;
+          if (s.y < -15) s.y = height + 15;
+          if (s.y > height + 15) s.y = -15;
+
+          const wave = (Math.sin(s.phase) + 1) / 2;
+          const opacity = Math.pow(wave, 3) * s.maxOpacity;
+
+          if (s.isStar) {
+            drawStarFlare(s.x, s.y, s.size, opacity, colors);
+          } else {
+            drawSpark(s.x, s.y, s.size, opacity, colors);
+          }
+        }
+
+        // Draw interactive cursor stardust
+        for (let i = cursorDust.length - 1; i >= 0; i--) {
+          const p = cursorDust[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= p.decay;
+
+          if (p.life <= 0) {
+            cursorDust.splice(i, 1);
+            continue;
+          }
+
+          const currentOpacity = p.life * 0.9;
+          const currentSize = p.size * (0.5 + p.life * 0.5);
+
+          if (p.isStar) {
+            drawStarFlare(p.x, p.y, currentSize, currentOpacity, colors);
+          } else {
+            drawSpark(p.x, p.y, currentSize, currentOpacity, colors);
+          }
+        }
+
+        requestAnimationFrame(renderSparkles);
+      }
+
+      requestAnimationFrame(renderSparkles);
+    })();
+
+    /* ==========================================================
+       1. 3D CARD TILT & SPECULAR GOLD SHEEN ENGINE
+       ========================================================== */
+    (function initCardTilt() {
+      const tiltCards = document.querySelectorAll('.codex-cell, .opus-card, .metric-panel, .dispatch-core, .philosophy-card');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5.5;
+          const rotateY = ((x - centerX) / centerX) * 5.5;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      });
+    })();
+
+    /* ==========================================================
+       2. SCROLL REVEAL OBSERVER ENGINE
+       ========================================================== */
+    (function initScrollReveal() {
+      const revealItems = document.querySelectorAll('.reveal-item, .codex-cell, .philosophy-card, .section-title, .sigil-separator');
+      revealItems.forEach(el => el.classList.add('reveal-item'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      revealItems.forEach(el => observer.observe(el));
+    })();
+
+    /* ==========================================================
+       3. ETHEREAL WEB AUDIO CHIMES ENGINE (Always On by Default)
+       ========================================================== */
+    let audioCtx = null;
+    let audioEnabled = true; // Always ON by default
+    const audioBtn = document.getElementById('audioBtn');
+    const audioIcon = document.getElementById('audioIcon');
+
+    const pentatonicScale = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50]; // C5, D5, E5, G5, A5, C6
+
+    function initAudioContext() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+      } catch (e) {}
+    }
+
+    // Auto-unlock Web AudioContext on first user touch/scroll/click (browser policy requirement)
+    window.addEventListener('pointerdown', initAudioContext, { once: true, passive: true });
+    window.addEventListener('keydown', initAudioContext, { once: true, passive: true });
+    window.addEventListener('wheel', initAudioContext, { once: true, passive: true });
+
+    function playCelestialChime(freqIndex = 0, duration = 1.2) {
+      if (!audioEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        const freq = pentatonicScale[freqIndex % pentatonicScale.length];
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        // Soft exponential bell decay
+        gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.07, audioCtx.currentTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    if (audioBtn) {
+      audioBtn.addEventListener('click', () => {
+        audioEnabled = !audioEnabled;
+        audioIcon.textContent = audioEnabled ? '🔔' : '🔇';
+        audioBtn.classList.toggle('active', audioEnabled);
+        if (audioEnabled) {
+          playCelestialChime(0, 1.4);
+          setTimeout(() => playCelestialChime(2, 1.4), 120);
+          setTimeout(() => playCelestialChime(4, 1.8), 240);
+          showSigilToast('Ethereal Chimes Awakened');
+        } else {
+          showSigilToast('Ethereal Chimes Muted');
+        }
+      });
+    }
+
+    // Attach gentle chimes on interactive hovers when audio is enabled
+    document.querySelectorAll('.codex-cell, .opus-card, .dispatch-btn, .header-tool-btn, .theme-toggle').forEach((el, idx) => {
+      el.addEventListener('mouseenter', () => {
+        if (audioEnabled) playCelestialChime(idx % pentatonicScale.length, 0.9);
+      });
+    });
+
+    /* ==========================================================
+       4. SIGIL TOAST NOTIFICATION ENGINE
+       ========================================================== */
+    const sigilToast = document.getElementById('sigilToast');
+    const toastMsg = document.getElementById('toastMsg');
+    let toastTimer = null;
+
+    function showSigilToast(text) {
+      if (!sigilToast || !toastMsg) return;
+      toastMsg.textContent = text;
+      sigilToast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        sigilToast.classList.remove('show');
+      }, 3400);
+    }
+
+    // One-Click Email Inscribe
+    const dispatchEmailBtn = document.getElementById('dispatchEmailBtn');
+    if (dispatchEmailBtn) {
+      dispatchEmailBtn.addEventListener('click', (e) => {
+        const email = dispatchEmailBtn.getAttribute('data-email') || 'kivssss@users.noreply.github.com';
+        navigator.clipboard.writeText(email).then(() => {
+          showSigilToast(`Inscribed to Clipboard: ${email}`);
+          if (audioEnabled) playCelestialChime(3, 1.4);
+        }).catch(() => {
+          showSigilToast(`Email: ${email}`);
+        });
+      });
+    }
+
+    /* ==========================================================
+       5. PROJECT DOSSIER MODAL ENGINE
+       ========================================================== */
+    const dossierData = {
+      floodguard: {
+        num: 'OPUS · 01',
+        title: 'Floodguard Application',
+        summary: 'A civic warning and environmental sensory architecture designed to deliver real-time alerts to vulnerable communities during severe weather incidents. Features responsive telemetry parsing, threshold alerting, and offline resilience.',
+        specs: [
+          { label: 'Role & Architecture', val: 'Lead Architectural Systems · Client Engineering' },
+          { label: 'Technologies', val: 'HTML5, CSS3, JavaScript, Leaflet GIS, OpenWeather API' },
+          { label: 'Core Axiom', val: 'Immediate civic clarity under high-stress conditions' },
+          { label: 'Status', val: 'Active Repository · Iterative Enhancement' }
+        ],
+        github: 'https://github.com/Kivssss/Floodguard-app'
+      },
+      portfolio: {
+        num: 'OPUS · 02',
+        title: 'Tattoo Aesthetic Portfolio',
+        summary: 'A formal conceptual portfolio inspired by sacred geometry, fine-line tattoo craft, and the classical myth of Icarus. Features a dual-lerp GPU physics cursor, Studio Freight Lenis momentum scrolling, canvas stardust particles, and dynamic theme synchronization.',
+        specs: [
+          { label: 'Aesthetic Direction', val: 'Fine-Line Tattoo · Renaissance Antiquity' },
+          { label: 'Performance Matrix', val: 'Hardware translate3d GPU lerp, sub-pixel sleep, 60fps canvas' },
+          { label: 'Deployment', val: 'GitHub Pages (kivssss.github.io) · Zero Dependencies' },
+          { label: 'Typography', val: 'Cinzel, Cormorant Garamond, Space Grotesk' }
+        ],
+        github: 'https://github.com/Kivssss/Kivssss.github.io'
+      }
+    };
+
+    const dossierOverlay = document.getElementById('dossierOverlay');
+    const dossierClose = document.getElementById('dossierClose');
+    const dossierNum = document.getElementById('dossierNum');
+    const dossierTitle = document.getElementById('dossierTitle');
+    const dossierSummary = document.getElementById('dossierSummary');
+    const dossierSpecGrid = document.getElementById('dossierSpecGrid');
+    const dossierActions = document.getElementById('dossierActions');
+
+    function openDossier(projectKey) {
+      const data = dossierData[projectKey];
+      if (!data || !dossierOverlay) return;
+
+      dossierNum.textContent = data.num;
+      dossierTitle.textContent = data.title;
+      dossierSummary.textContent = data.summary;
+
+      dossierSpecGrid.innerHTML = data.specs.map(s => `
+        <div class="dossier-spec-item">
+          <h5>${s.label}</h5>
+          <p>${s.val}</p>
+        </div>
+      `).join('');
+
+      dossierActions.innerHTML = `
+        <a href="${data.github}" target="_blank" rel="noopener" class="dispatch-btn">✦ Examine Source Repository ↗</a>
+        <button class="dispatch-btn" id="dossierDismissBtn" style="cursor: pointer; background: transparent; border-color: var(--border-fine);">Close Folio</button>
+      `;
+
+      document.getElementById('dossierDismissBtn').addEventListener('click', closeDossier);
+
+      dossierOverlay.classList.add('active');
+      if (audioEnabled) playCelestialChime(2, 1.2);
+    }
+
+    function closeDossier() {
+      if (dossierOverlay) dossierOverlay.classList.remove('active');
+    }
+
+    document.querySelectorAll('.open-dossier-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const key = btn.getAttribute('data-project');
+        openDossier(key);
+      });
+    });
+
+    if (dossierClose) dossierClose.addEventListener('click', closeDossier);
+    if (dossierOverlay) {
+      dossierOverlay.addEventListener('click', (e) => {
+        if (e.target === dossierOverlay) closeDossier();
+      });
+    }
+
+    /* ==========================================================
+       6. COMMAND PALETTE (Ctrl + K) ENGINE
+       ========================================================== */
+    const cmdOverlay = document.getElementById('cmdOverlay');
+    const cmdInput = document.getElementById('cmdInput');
+    const cmdList = document.getElementById('cmdList');
+    const cmdBtn = document.getElementById('cmdBtn');
+
+    const commands = [
+      { name: 'Jump to Origin (Hero Sigil)', icon: '✦', action: () => scrollToId('#origin'), shortcut: 'G O' },
+      { name: 'Jump to Philosophy & Profile', icon: '✦', action: () => scrollToId('#philosophy'), shortcut: 'G P' },
+      { name: 'Jump to The Codex of Skills', icon: '✧', action: () => scrollToId('#codex'), shortcut: 'G C' },
+      { name: 'Jump to Selected Works', icon: '✦', action: () => scrollToId('#works'), shortcut: 'G W' },
+      { name: 'Jump to Archival Metrics', icon: '✧', action: () => scrollToId('#archive'), shortcut: 'G M' },
+      { name: 'Jump to Celestial Dispatch', icon: '✦', action: () => scrollToId('#dispatch'), shortcut: 'G D' },
+      { name: 'Toggle Visual Theme (Dark / Light)', icon: '☼', action: () => themeBtn.click(), shortcut: 'T T' },
+      { name: 'Replay Initiation Splash Screen', icon: '✦', action: () => replaySplash(), shortcut: 'R S' },
+      { name: 'Toggle Auto-Ascent Background Scroll', icon: '✦', action: () => toggleAutoDescent(), shortcut: 'T B' },
+      { name: 'Toggle Ethereal Audio Chimes', icon: '🔔', action: () => audioBtn && audioBtn.click(), shortcut: 'T A' },
+      { name: 'Toggle Celestial Etch Mode', icon: '✧', action: () => etchBtn && etchBtn.click(), shortcut: 'T E' },
+      { name: 'Inscribe Email to Clipboard', icon: '✉', action: () => dispatchEmailBtn && dispatchEmailBtn.click(), shortcut: 'C E' },
+      { name: 'Open GitHub Profile (Kivssss)', icon: '↗', action: () => window.open('https://github.com/Kivssss', '_blank'), shortcut: 'G H' }
+    ];
+
+    let selectedCmdIndex = 0;
+    let filteredCommands = [...commands];
+
+    function scrollToId(id) {
+      if (lenis) {
+        const el = document.querySelector(id);
+        if (el) lenis.scrollTo(el, { offset: -60, duration: 1.6 });
+      } else {
+        const el = document.querySelector(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function renderCmdList() {
+      if (!cmdList) return;
+      if (filteredCommands.length === 0) {
+        cmdList.innerHTML = `<li class="cmd-item" style="color: var(--ink-dim); font-style: italic;">No matching disciplines found...</li>`;
+        return;
+      }
+      cmdList.innerHTML = filteredCommands.map((cmd, idx) => `
+        <li class="cmd-item ${idx === selectedCmdIndex ? 'selected' : ''}" data-index="${idx}">
+          <span><span style="color: var(--gold); margin-right: 8px;">${cmd.icon}</span> ${cmd.name}</span>
+          <span class="shortcut">${cmd.shortcut}</span>
+        </li>
+      `).join('');
+
+      cmdList.querySelectorAll('.cmd-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.getAttribute('data-index'), 10);
+          if (filteredCommands[idx]) {
+            executeCommand(filteredCommands[idx]);
+          }
+        });
+      });
+    }
+
+    function openCmdPalette() {
+      if (!cmdOverlay) return;
+      cmdOverlay.classList.add('active');
+      cmdInput.value = '';
+      filteredCommands = [...commands];
+      selectedCmdIndex = 0;
+      renderCmdList();
+      setTimeout(() => cmdInput.focus(), 50);
+      if (audioEnabled) playCelestialChime(1, 1.0);
+    }
+
+    function closeCmdPalette() {
+      if (cmdOverlay) cmdOverlay.classList.remove('active');
+    }
+
+    function executeCommand(cmd) {
+      closeCmdPalette();
+      if (cmd && cmd.action) cmd.action();
+    }
+
+    if (cmdBtn) cmdBtn.addEventListener('click', openCmdPalette);
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (cmdOverlay && cmdOverlay.classList.contains('active')) {
+          closeCmdPalette();
+        } else {
+          openCmdPalette();
+        }
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        closeCmdPalette();
+        closeDossier();
+        return;
+      }
+
+      if (cmdOverlay && cmdOverlay.classList.contains('active')) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedCmdIndex = (selectedCmdIndex + 1) % Math.max(1, filteredCommands.length);
+          renderCmdList();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedCmdIndex = (selectedCmdIndex - 1 + filteredCommands.length) % Math.max(1, filteredCommands.length);
+          renderCmdList();
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (filteredCommands[selectedCmdIndex]) {
+            executeCommand(filteredCommands[selectedCmdIndex]);
+          }
+        }
+      }
+    });
+
+    if (cmdInput) {
+      cmdInput.addEventListener('input', () => {
+        const query = cmdInput.value.toLowerCase().trim();
+        filteredCommands = commands.filter(c => c.name.toLowerCase().includes(query) || c.shortcut.toLowerCase().includes(query));
+        selectedCmdIndex = 0;
+        renderCmdList();
+      });
+    }
+
+    if (cmdOverlay) {
+      cmdOverlay.addEventListener('click', (e) => {
+        if (e.target === cmdOverlay) closeCmdPalette();
+      });
+    }
+
+    /* ==========================================================
+       7. CELESTIAL ETCH SANDBOX ENGINE (Draw Constellations)
+       ========================================================== */
+    const etchCanvas = document.getElementById('etchCanvas');
+    const etchBtn = document.getElementById('etchBtn');
+    const etchIcon = document.getElementById('etchIcon');
+
+    if (etchCanvas) {
+      const eCtx = etchCanvas.getContext('2d');
+      let eWidth = window.innerWidth;
+      let eHeight = window.innerHeight;
+      let isDrawing = false;
+      let etchPoints = [];
+
+      function resizeEtch() {
+        eWidth = window.innerWidth;
+        eHeight = window.innerHeight;
+        etchCanvas.width = eWidth;
+        etchCanvas.height = eHeight;
+      }
+      window.addEventListener('resize', resizeEtch, { passive: true });
+      resizeEtch();
+
+      if (etchBtn) {
+        etchBtn.addEventListener('click', () => {
+          const isEtch = document.body.classList.toggle('etch-mode');
+          etchBtn.classList.toggle('active', isEtch);
+          etchIcon.textContent = isEtch ? '✦' : '✧';
+          if (isEtch) {
+            showSigilToast('Celestial Etch Mode Active: Draw with Cursor');
+            if (audioEnabled) playCelestialChime(4, 1.4);
+          } else {
+            showSigilToast('Celestial Etch Mode Disengaged');
+          }
+        });
+      }
+
+      window.addEventListener('mousedown', (e) => {
+        if (!document.body.classList.contains('etch-mode')) return;
+        isDrawing = true;
+        etchPoints.push({ x: e.clientX, y: e.clientY, time: performance.now(), opacity: 1.0 });
+        if (audioEnabled) playCelestialChime(Math.floor(Math.random() * 6), 0.8);
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDrawing || !document.body.classList.contains('etch-mode')) return;
+        etchPoints.push({ x: e.clientX, y: e.clientY, time: performance.now(), opacity: 1.0 });
+      });
+
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+
+      function renderEtch() {
+        if (etchPoints.length > 0) {
+          eCtx.clearRect(0, 0, eWidth, eHeight);
+          const now = performance.now();
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          const strokeColor = isLight ? 'rgba(168, 132, 72, ' : 'rgba(214, 168, 86, ';
+
+          for (let i = 0; i < etchPoints.length; i++) {
+            const age = (now - etchPoints[i].time) / 1000;
+            etchPoints[i].opacity = Math.max(0, 1 - (age / 3.5));
+          }
+          etchPoints = etchPoints.filter(p => p.opacity > 0.01);
+
+          if (etchPoints.length > 1) {
+            eCtx.beginPath();
+            eCtx.moveTo(etchPoints[0].x, etchPoints[0].y);
+            for (let i = 1; i < etchPoints.length; i++) {
+              eCtx.lineTo(etchPoints[i].x, etchPoints[i].y);
+            }
+            eCtx.strokeStyle = strokeColor + '0.75)';
+            eCtx.lineWidth = 1.2;
+            eCtx.stroke();
+
+            for (let i = 0; i < etchPoints.length; i += 4) {
+              const p = etchPoints[i];
+              eCtx.beginPath();
+              eCtx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+              eCtx.fillStyle = strokeColor + p.opacity + ')';
+              eCtx.fill();
+            }
+          }
+        }
+        requestAnimationFrame(renderEtch);
+      }
+      requestAnimationFrame(renderEtch);
+    }
+
+    /* ==========================================================
+       8. LIVE GITHUB TRANSMISSIONS FEED ENGINE
+       ========================================================== */
+    (function initGitHubTransmissions() {
+      const transList = document.getElementById('transList');
+      const transStatusText = document.getElementById('transStatusText');
+      if (!transList) return;
+
+      fetch('https://api.github.com/users/Kivssss/events?per_page=6')
+        .then(res => {
+          if (!res.ok) throw new Error('API Rate-Limited');
+          return res.json();
+        })
+        .then(events => {
+          if (!Array.isArray(events) || events.length === 0) return;
+          const rows = events.slice(0, 4).map(ev => {
+            const repoName = ev.repo ? ev.repo.name : 'Kivssss/Repository';
+            let desc = 'Telemetry activity recorded in repository';
+            if (ev.type === 'PushEvent' && ev.payload && ev.payload.commits && ev.payload.commits.length > 0) {
+              desc = ev.payload.commits[0].message.slice(0, 75);
+            } else if (ev.type === 'CreateEvent') {
+              desc = `Created branch or reference: ${ev.payload.ref || 'main'}`;
+            } else if (ev.type === 'WatchEvent') {
+              desc = 'Starred repository in archival registry';
+            }
+
+            const date = new Date(ev.created_at);
+            const timeAgo = Math.max(1, Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24))) + 'd ago';
+
+            return `
+              <li class="trans-row">
+                <div>
+                  <span class="trans-repo">${repoName}</span>
+                  <span class="trans-desc">${desc}</span>
+                </div>
+                <span class="trans-time">${timeAgo}</span>
+              </li>
+            `;
+          }).join('');
+
+          transList.innerHTML = rows;
+          if (transStatusText) transStatusText.textContent = 'Live Synced';
+        })
+        .catch(() => {
+          if (transStatusText) transStatusText.textContent = 'Archival Buffer';
+        });
+    })();
+
+    /* ==========================================================
+       9. ETHEREAL SACRED GEOMETRY SPLASH SCREEN ENGINE
+       ========================================================== */
+    const splashScreen = document.getElementById('splashScreen');
+    const splashBar = document.getElementById('splashBar');
+    const splashStatus = document.getElementById('splashStatus');
+    let splashDismissed = false;
+    let splashInterval = null;
+
+    function playAscendingInitiationChord() {
+      if (!audioEnabled) return;
+      playCelestialChime(0, 1.8);
+      setTimeout(() => playCelestialChime(2, 2.0), 160);
+      setTimeout(() => playCelestialChime(4, 2.4), 320);
+    }
+
+    function dismissSplash() {
+      if (splashDismissed || !splashScreen) return;
+      splashDismissed = true;
+      if (splashInterval) clearInterval(splashInterval);
+
+      if (splashBar) splashBar.style.width = '100%';
+      if (splashStatus) splashStatus.textContent = 'Sanctum Prepared.';
+
+      splashScreen.classList.add('splash-hidden');
+      playAscendingInitiationChord();
+    }
+
+    function replaySplash() {
+      if (!splashScreen) return;
+      splashDismissed = false;
+      splashScreen.classList.remove('splash-hidden');
+      if (splashBar) splashBar.style.width = '0%';
+      if (splashStatus) splashStatus.textContent = 'Inscribing Sacred Codex...';
+      startSplashSequence();
+    }
+
+    function startSplashSequence() {
+      if (splashInterval) clearInterval(splashInterval);
+      let progress = 0;
+      const phases = [
+        { threshold: 25, text: 'Inscribing Sacred Codex...' },
+        { threshold: 55, text: 'Awakening Disciplines & Geometry...' },
+        { threshold: 82, text: 'Aligning Celestial Matrix...' },
+        { threshold: 99, text: 'Sanctum Prepared...' }
+      ];
+
+      splashInterval = setInterval(() => {
+        if (splashDismissed) return;
+        progress += Math.floor(Math.random() * 6) + 3;
+        if (progress > 100) progress = 100;
+
+        if (splashBar) splashBar.style.width = `${progress}%`;
+
+        for (let i = 0; i < phases.length; i++) {
+          if (progress <= phases[i].threshold) {
+            if (splashStatus && splashStatus.textContent !== phases[i].text) {
+              splashStatus.textContent = phases[i].text;
+            }
+            break;
+          }
+        }
+
+        if (progress >= 100) {
+          clearInterval(splashInterval);
+          setTimeout(() => {
+            if (!splashDismissed) dismissSplash();
+          }, 450);
+        }
+      }, 75);
+    }
+
+    if (splashScreen) {
+      splashScreen.addEventListener('click', dismissSplash);
+      window.addEventListener('keydown', (e) => {
+        if (!splashDismissed && (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape')) {
+          dismissSplash();
+        }
+      }, { once: false });
+
+      // Begin sequence upon initial boot
+      startSplashSequence();
+    }
+  </script>
+
+</body>
+</html>
